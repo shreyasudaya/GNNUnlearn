@@ -1,0 +1,6 @@
+numpy==1.26.2
+torch==2.3.0
+torch_geometric
+wandb
+pandas
+tqdm

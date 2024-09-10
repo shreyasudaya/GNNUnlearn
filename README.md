@@ -1,35 +1,6 @@
 
 # GNNDelete: A General Unlearning Strategy for Graph Neural Networks
 
-#### Authors: 
-- [Jiali Cheng]() (jiali.cheng.ccnr@gmail.com)
-- [George Dasoulas](https://gdasoulas.github.io/) (george.dasoulas1@gmail.com)
-- [Huan He](https://github.com/mims-harvard/Raindrop) (huan_he@hms.harvard.edu)
-- [Chirag Agarwal](https://chirag126.github.io/) (chiragagarwall12@gmail.com)
-- [Marinka Zitnik](https://zitniklab.hms.harvard.edu/) (marinka@hms.harvard.edu)
-
-#### [Project website](https://zitniklab.hms.harvard.edu/projects/GNNDelete/)
-
-#### GNNDelete Paper: [ICLR 2023](https://openreview.net/forum?id=X9yCkmT5Qrl), [Preprint]()
-
-
-## Overview 
-
-This repository contains the code to preprocess datasets, train GNN models, and perform data deletion on trained GNN models for manuscript *GNNDelete: A General Graph Unlearning Strategy*. We propose GNNDelete, a model-agnostic layer-wise operator that optimize both properties for unlearning tasks. It formalizes the required properties for graph unlearning in the form of Deleted Edge Consistency and Neighborhood Influence. GNNDelete updates latent representations to delete nodes and edges from the model while keeping the rest of the learned knowledge intact. 
-
-<p align="center">
-    <img src="images/fig1.png" width="1000" align="center">
-</p>
-
-
-## Key idea of GNNDelete
-
-To unlearn information from a trained GNN, its influence on both GNN model weights as well as on representations of neighbors in the graph must be deleted from the model. However, existing methods using retraining and weight modification either degrade model weights shared across all nodes or are ineffective because of strong dependency of deleted edges on their local graph neighborhood. 
-
-Our model formulates the unlearning problem as a representation learning task. It formalizes the required properties for graph unlearning in the form of Deleted Edge Consistency and Neighborhood Influence. GNNDelete updates latent representations to delete nodes and edges from the model while keeping the rest of the learned knowledge intact. 
-
-**Overview of GNNDelete approach.** Our model extends the standard (Msg, Agg, Upd) GNN framework into (Msg, Agg, Upd, Del). Upon unlearning, GNNDelete inserts trainable deletion operators after the GNN layers. The **Del** operator updates the node representations of the affected nodes of deletion (based on the local enclosing subgraph of the deleted information). The updated representations are optimized to meet objectives of **Deleted Edge Consistency** and **Neighborhood Influence**. We only train the deletion operators, while freezing the rest of the GNN weights.
-
 
 ## Datasets
 
@@ -119,20 +90,6 @@ We compare GNNDelete to several baselines
 - GraphEraser, please refer to the [official implementation](https://github.com/MinChen00/Graph-Unlearning)
 - Certified Graph Unlearning, please refer to the [official implementation](https://github.com/thupchnsky/sgc_unlearn)
 
-
-## Citation
-
-If you find *GNNDelete* useful for your research, please consider citing this paper:
-
-```
-@inproceedings{cheng2023gnndelete,
-title={{GNND}elete: A General Unlearning Strategy for Graph Neural Networks},
-author={Jiali Cheng and George Dasoulas and Huan He and Chirag Agarwal and Marinka Zitnik},
-booktitle={International Conference on Learning Representations},
-year={2023},
-url={https://openreview.net/forum?id=X9yCkmT5Qrl}
-}
-```
 
 
 ## Miscellaneous
