@@ -1,4 +1,4 @@
-from .models import GCN, GAT, GIN, RGCN, RGAT, GCNDelete, GATDelete, GINDelete, RGCNDelete, RGATDelete
+from .models import GCN, GAT, GIN, RGCN, GCNDelete, GATDelete, GINDelete, RGCNDelete
 from .trainer.base import Trainer, KGTrainer, NodeClassificationTrainer
 from .trainer.retrain import RetrainTrainer, KGRetrainTrainer
 from .trainer.gnndelete import GNNDeleteTrainer
@@ -7,9 +7,7 @@ from .trainer.gradient_ascent import GradientAscentTrainer, KGGradientAscentTrai
 from .trainer.descent_to_delete import DtdTrainer
 from .trainer.approx_retrain import ApproxTrainer
 from .trainer.graph_eraser import GraphEraserTrainer
-from .trainer.graph_editor import GraphEditorTrainer
-from .trainer.member_infer import MIAttackTrainer, MIAttackTrainerNode
-
+from .trainer.member_infer import MIAttackTrainer
 
 trainer_mapping = {
     'original': Trainer,
@@ -24,11 +22,8 @@ trainer_mapping = {
     'gnndelete_nodeemb': GNNDeleteNodeembTrainer,
     'gnndelete_cosine': GNNDeleteTrainer,
     'graph_eraser': GraphEraserTrainer,
-    'graph_editor': GraphEditorTrainer,
     'member_infer_all': MIAttackTrainer,
     'member_infer_sub': MIAttackTrainer,
-    'member_infer_all_node': MIAttackTrainerNode,
-    'member_infer_sub_node': MIAttackTrainerNode,
 }
 
 kg_trainer_mapping = {
